@@ -1,0 +1,258 @@
+%% Preamble
+
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[margin = 1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{fontspec}
+\usepackage{titletoc}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+
+\newfontfamily{\sectionsfont}{Perpetua Titling MT}
+
+\definecolor{mycyan}{HTML}{03B0B5}
+\definecolor{mypeach}{HTML}{FC7970}
+\definecolor{myorange}{HTML}{e74c3c}
+\definecolor{mystealblue}{HTML}{6591B8}
+\definecolor{myteal}{HTML}{169191}
+\definecolor{mygreen}{HTML}{12CA5E}
+\definecolor{myred}{HTML}{EA2828}
+\definecolor{mygrey}{HTML}{969696}
+
+% Some icons
+
+\newcommand{\yesicon}{
+	\begin{tikzpicture}
+		\draw[mygreen, line width = 2pt] (-0.075, 0.175) -- (0, 0.05) -- (0.275, 0.2);
+	\end{tikzpicture}
+}
+\newcommand{\noicon}{
+	\begin{tikzpicture}
+		\draw[myred, line width = 2pt] (-0.125, 0.05) -- (0.125, -0.2);
+		\draw[myred, line width = 2pt] (0.125, 0.05) -- (-0.125, -0.2);
+	\end{tikzpicture}
+}
+\newcommand{\naicon}{
+	\begin{tikzpicture}
+		\draw[mygrey, line width = 2pt] (0, 0) circle (0.125cm);
+	\end{tikzpicture}
+}
+
+% other useful commands
+
+\newcommand{\insertitem}[1]{\item #1}
+\NewDocumentCommand{\mylist}{>{\SplitList{;;;}}m}
+{
+	\begin{enumerate}[itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+		\ProcessList{#1}{\insertitem}	
+	\end{enumerate}
+}
+
+% tcolorboxes for examples, observations, theorems, etc
+
+\newcommand{\myobservation}[1]{
+	\par \noindent
+	\begin{minipage}[t]{.065\linewidth}
+		\raggedleft{\includegraphics[height = 0.6cm]{assets/observation.png}}
+		\hspace{.01\linewidth}
+	\end{minipage}
+	\begin{minipage}[t]{.925\linewidth}
+		\vspace{-0.6cm}
+		\begin{tcolorbox}[
+			colbacktitle = mypeach,
+			colback = mypeach!20,
+			colframe = mypeach,
+			fonttitle = \bfseries,
+			title = Observations,
+			]
+			#1
+		\end{tcolorbox}
+	\end{minipage}
+}
+
+\newcommand{\myexample}[1]{
+	\par \noindent
+	\begin{minipage}[t]{.065\linewidth}
+		\begin{flushright}
+			\includegraphics[height = 0.6cm]{assets/example.png}
+		\end{flushright}
+	\end{minipage}
+	\hspace{.01\linewidth}
+	\begin{minipage}[t]{.925\linewidth}
+		\vspace{-0.5cm}
+		\begin{tcolorbox}[
+			colbacktitle = mycyan,
+			colback = mycyan!20,
+			colframe = mycyan,
+			fonttitle = \bfseries,
+			title = Example,
+			]
+			#1
+		\end{tcolorbox}
+	\end{minipage}
+}
+
+\newcommand{\mysolution}[1]{
+	\par \noindent
+	\hspace{.075\linewidth}
+		\begin{minipage}{.925\linewidth}
+		\begin{tcolorbox}[
+			colframe = mycyan,
+			colback = white,
+			]
+			{\itshape Solution.}\, #1
+		\end{tcolorbox}
+	\end{minipage}
+}
+
+\newcommand{\mytheorem}[2]{
+	\begin{tcolorbox}[
+		title = {\bfseries Theorem},
+		after title = {\hfill\bfseries #1},
+		colframe = myorange,
+		colback = white,
+		]
+		#2
+	\end{tcolorbox}
+}
+
+\newcommand{\myproof}[1]{
+	\par \noindent
+	\begin{tcolorbox}[
+		colframe = myorange,
+		colback = white,
+		]
+		{\itshape Proof.}\, #1
+	\end{tcolorbox}
+}
+
+\newcommand{\mydefinition}[2]{
+	\begin{tcolorbox}[
+		title = {\bfseries Definition},
+		after title = {\hfill\bfseries #1},
+		colframe = mystealblue,
+		colback = white,
+		]
+		#2
+	\end{tcolorbox}
+}
+
+\newcommand{\myexercise}[1]{
+	\begin{tcolorbox}[
+		title = {\bfseries Exercise},
+		colframe = myteal,
+		colback = white,
+		]
+		#1
+	\end{tcolorbox}
+}
+
+
+% redefinition of titling and sections
+
+\renewcommand{\maketitle}{{
+		\begin{tikzpicture}[remember picture, overlay]
+			\pgftext[right, x = 6cm, y = 0.2cm]
+				{\color{mypeach}\Huge\sectionsfont\bfseries Class Notes};
+			\draw[fill = mypeach, draw = mypeach] (-10, -.75) rectangle (3, 1);
+			\begin{scope}
+				\clip (-10, -.75) rectangle (3, 1);
+				\pgftext[right, x = 6cm, y = 0.2cm]
+					{\color{white}\Huge\sectionsfont\bfseries Class Notes};
+			\end{scope}
+			
+			\pgftext[right, x = 15cm, y = 0.2cm]
+				{\color{mycyan}\Huge\sectionsfont\bfseries Group Theory};
+			\draw[fill = mycyan, draw = mycyan] (12, -.75) rectangle (20, 1);
+			\begin{scope}
+				\clip (12, -.75) rectangle (20, 1);
+				\pgftext[right, x = 15cm, y = 0.2cm]
+					{\color{white}\Huge\sectionsfont\bfseries Group Theory};
+			\end{scope}
+			
+			\draw[mycyan, line width = 2pt] (-20, 1.25) -- (20, 1.25);
+			\draw[mypeach, line width = 2pt] (-20, -1) -- (20, -1);
+			\node[fill = white, draw = white, text = black] at (7.5, -1.6)
+				{\LARGE\bfseries\sectionsfont B.Sc. (Hons.) Mathematics};
+			\node[fill = white, draw = white, text = black] at (7.5, -2.25)
+				{\Large\bfseries\sectionsfont University of Delhi};
+		\end{tikzpicture}
+	}
+	\vspace{3.5cm}
+}
+
+\renewcommand{\section}[1]{
+	\addcontentsline{toc}{section}{#1}
+	\vspace{0.5cm}
+	\begin{center}
+		\hrule
+		\begin{tikzpicture}[overlay]
+			\fill[mycyan!90, draw = black] (0.025\linewidth, 0.5) -- (-.5\linewidth, 0.5) -- (-.5\linewidth, -0.5) -- (-0.025\linewidth, -0.5) -- cycle;
+			\fill[mypeach!90, draw = black] (0.025\linewidth, 0.5) -- (.5\linewidth, 0.5) -- (.5\linewidth, -0.5) -- (-0.025\linewidth, -0.5) -- cycle;
+			\node[fill = white, draw = black, text = black] at (0, 0) {\LARGE\bfseries\sectionsfont #1};
+			\draw[line width = 1pt] (-.5\linewidth, 0.5) -- (.5\linewidth, 0.5) -- (.5\linewidth, -0.5) -- (-.5\linewidth, -0.5) -- cycle;
+		\end{tikzpicture}
+	\end{center}
+	\vspace{0.35cm}
+}
+
+\renewcommand{\subsection}[1]{
+	\addcontentsline{toc}{subsection}{#1}
+	\vspace{0.3cm}
+	\begin{center}
+		\begin{tikzpicture}[overlay]
+			\draw[mypeach, line width = 10pt] (-.5\linewidth, 0) -- (0, 0);
+			\draw[mycyan, line width = 10pt] (0, 0) -- (.5\linewidth, 0);
+			\node[fill = white, text = black] at (0, 0) {\large\bfseries\sectionsfont #1};
+		\end{tikzpicture}
+	\end{center}
+}
+
+
+%% Macros, letters, redefinitions
+
+\let\originalforall\forall
+\let\originalexists\exists
+\renewcommand{\forall}{\ \originalforall\ }
+\renewcommand{\exists}{\ \originalexists\ }
+
+\renewcommand{\paragraph}[1]{\par\medskip\noindent {\itshape #1. \,}}
+
+\newcommand{\inv}{^{-1}}
+
+\newcommand{\circled}[1]{
+	\begin{tikzpicture}[overlay]
+		\node[draw = black, circle, text = black, inner sep = 1pt] at (0, 0.1) {#1};
+	\end{tikzpicture}
+}
+
+\newcommand{\bbA}{\mathbb{A}}	\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}	\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}	\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}	\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}	\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}	\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}	\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}	\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}	\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}	\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}	\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}	\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}	\newcommand{\bbZ}{\mathbb{Z}}
+
+
+%% main
+
+\begin{document}
+	
+	\maketitle
+	
+	\input{sections/introduction.tex}
+	
+\end{document}
