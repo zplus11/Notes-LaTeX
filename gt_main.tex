@@ -58,58 +58,36 @@
 % tcolorboxes for examples, observations, theorems, etc
 
 \newcommand{\myobservation}[1]{
-	\par \noindent
-	\begin{minipage}[t]{.065\linewidth}
-		\raggedleft{\includegraphics[height = 0.6cm]{assets/observation.png}}
-		\hspace{.01\linewidth}
-	\end{minipage}
-	\begin{minipage}[t]{.925\linewidth}
-		\vspace{-0.6cm}
-		\begin{tcolorbox}[
-			colbacktitle = mypeach,
-			colback = mypeach!20,
-			colframe = mypeach,
-			fonttitle = \bfseries,
-			title = Observations,
-			]
-			#1
-		\end{tcolorbox}
-	\end{minipage}
+	\begin{tcolorbox}[
+		colbacktitle = mypeach,
+		colback = mypeach!20,
+		colframe = mypeach,
+		fonttitle = \bfseries,
+		title = Observations,
+		]
+		#1
+	\end{tcolorbox}
 }
 
 \newcommand{\myexample}[1]{
-	\par \noindent
-	\begin{minipage}[t]{.065\linewidth}
-		\begin{flushright}
-			\includegraphics[height = 0.6cm]{assets/example.png}
-		\end{flushright}
-	\end{minipage}
-	\hspace{.01\linewidth}
-	\begin{minipage}[t]{.925\linewidth}
-		\vspace{-0.5cm}
-		\begin{tcolorbox}[
-			colbacktitle = mycyan,
-			colback = mycyan!20,
-			colframe = mycyan,
-			fonttitle = \bfseries,
-			title = Example,
-			]
-			#1
-		\end{tcolorbox}
-	\end{minipage}
+	\begin{tcolorbox}[
+		colbacktitle = mycyan,
+		colback = mycyan!20,
+		colframe = mycyan,
+		fonttitle = \bfseries,
+		title = Example,
+		]
+		#1
+	\end{tcolorbox}
 }
 
 \newcommand{\mysolution}[1]{
-	\par \noindent
-	\hspace{.075\linewidth}
-		\begin{minipage}{.925\linewidth}
-		\begin{tcolorbox}[
-			colframe = mycyan,
-			colback = white,
-			]
-			{\itshape Solution.}\, #1
-		\end{tcolorbox}
-	\end{minipage}
+	\begin{tcolorbox}[
+		colframe = mycyan,
+		colback = white,
+		]
+		{\itshape Solution.}\, #1
+	\end{tcolorbox}
 }
 
 \newcommand{\mytheorem}[2]{
@@ -191,9 +169,10 @@
 \newcommand{\mysection}[1]{
 	\begin{center}
 		\begin{tikzpicture}[overlay]
-			\fill[mycyan!90, draw = black] (0.025\linewidth, 0.5) rectangle (-.5\linewidth, -0.5);
-			\fill[mypeach!90, draw = black] (0.025\linewidth, 0.5) rectangle (.5\linewidth, -0.5);
+			\fill[mycyan!90, draw = black] (0.025\linewidth, 0.5) -- (-.5\linewidth, 0.5) -- (-.5\linewidth, -0.5) -- (-0.025\linewidth, -0.5) -- cycle;
+			\fill[mypeach!90, draw = black] (0.025\linewidth, 0.5) -- (.5\linewidth, 0.5) -- (.5\linewidth, -0.5) -- (-0.025\linewidth, -0.5) -- cycle;
 			\node[fill = white, draw = black, text = black] at (0, 0) {\LARGE\bfseries\sectionsfont #1};
+			\draw[line width = 1pt] (-.5\linewidth, 0.5) -- (.5\linewidth, 0.5) -- (.5\linewidth, -0.5) -- (-.5\linewidth, -0.5) -- cycle;
 		\end{tikzpicture}
 	\end{center}
 	\vspace{0.35cm}
@@ -255,12 +234,12 @@
 
 \begin{document}
 	
-	%\thispagestyle{empty}
+	\thispagestyle{empty}
 	\maketitle
-	%\vfill
+	\vfill
 	\tableofcontents
-	%\vfill
-	%\newpage
+	\vfill
+	\newpage
 	
 	\input{sections/introduction.tex}
 	

@@ -33,6 +33,8 @@ Below, a list of set-and-operations is given, along with whether they form a gro
 	Finally, we have $f_0 = 0x^n + 0x^{n-1} + \dots + 0$ such that $f_i + f_0 = f_i = f_i + f_0$ for every $f_i \in F$, therefore identity exists. Also, for each $f_i = \sum\limits_{i = 0}^{n} a_i x^{n-i}$, we have $-f_i = -\sum\limits_{i = 0}^{n} a_i x^{n-i}$ such that $f_i + (-f_i) = f_0 = -f_1 + f_1$, hence inverses exist. And therefore, $F$ forms a group under function addition, 
 }
 
+\myexercise{\mylist{Prove that the set of all square matrices with entries coming from $\bbR$ forms a group under matrix addition.;;;Check whether odd numbers form a group under addition or not. What about even numbers?}}
+
 \subsection{Cayley's Table}
 Cayley's table is a way to represent the group operation of a finite group using a square table. Each row and column in the table corresponds to an element of the group, and the entry at the intersection of a row and column represents the result of applying the group operation to the corresponding elements. Judging by the table, we can also tell if the given set forms a group or not. For example, if we consider the set $G = \{1, -1, \iota, -\iota\}$ with the operation of multiplication, then the following Cayley's Table can be formed.
 
@@ -61,17 +63,21 @@ Order of an element $a$ of a group $G$ is the smallest positive integer $n$ such
 	}
 }
 
-\subsection{The Set Of Square Matrices}
-Let $S$ be the collection of all $2 \times 2$ matrices with entries coming from $\mathbb{R}$, \emph{i.e.}, $$S = \bigg{\{}\begin{pmatrix} a & b \\ c & d \\ \end{pmatrix}: a,b,c,d \in \mathbb{R} \bigg{\}}$$ which is often represented as $M_2(\mathbb{R})$. Now, let $M_1 = \begin{pmatrix} a_1 & b_1 \\ c_1 & d_1 \\ \end{pmatrix}$ and $M_2 = \begin{pmatrix} a_2 & b_2 \\ c_2 & d_2 \\ \end{pmatrix}$ such that $M_1, M_2 \in S$. Then $M_1 + M_2 = \begin{pmatrix} a_1 + a_2 & b_1 + b_2 \\ c_1 + c_2 & d_1 + d_2 \end{pmatrix}$ which must also belong to $S$. Since matrix addition is associative, we conclude that $S$ is also associative under matrix addition. And clearly, we have $M_0 = \begin{pmatrix} 0 & 0 \\ 0 & 0 \\ \end{pmatrix}$ such that $M_i + M_0 = M_i = M_0 + M_i$ for any $M_i \in S$. And finally, we have $-M_i$ for each $M_i \in S$ such that $M_i + (-M_i) = M_0 = -M_i + M_i$, thus inverses exist as well. And hence we get that $S$ is a group under the operation of matrix addition. In fact, it is an Abelian Group!
-\subsection{Some More Matrix Groups}
+\subsection{Some Matrix Groups}
 Following are some special types of sets based on matrices:
-\begin{enumerate}[itemsep=3pt,parsep=0pt,topsep=2pt,partopsep=0pt]
-	\item $\text{GL}(2,\ \mathbb{R}) = \bigg{\{} \begin{pmatrix} a & b \\ c & d \\ \end{pmatrix} : a,b,c,d \in \mathbb{R}, ad \neq bc \bigg{\}}$.
-	\item $\text{SL}(2,\ \mathbb{R}) = \bigg{\{} \begin{pmatrix} a & b \\ c & d \\ \end{pmatrix} : a,b,c,d \in \mathbb{R}, ad - bc = 1 \bigg{\}}$.
-\end{enumerate}
+\mylist{
+	$\text{GL}(2,\ \mathbb{R}) = \bigg{\{} \begin{pmatrix} a & b \\ c & d \\ \end{pmatrix} : a,b,c,d \in \mathbb{R}, ad \neq bc \bigg{\}}$,;;;
+	$\text{SL}(2,\ \mathbb{R}) = \bigg{\{} \begin{pmatrix} a & b \\ c & d \\ \end{pmatrix} : a,b,c,d \in \mathbb{R}, ad - bc = 1 \bigg{\}}$.
+}
+
 and the following groups are formed for these sets:
-\begin{enumerate}[itemsep=1pt,parsep=0pt,topsep=2pt,partopsep=0pt]
-	\item $M_{\text{m}\times\text{n}}(\mathbb{R})$: Group w.r.t. matrix addition.
-	\item  $\text{GL}(2,\ \mathbb{R})$: Group w.r.t. matrix multiplication.
-	\item  $\text{SL}(2,\ \mathbb{R})$: Group w.r.t. matrix multiplication.
-\end{enumerate}
+\mylist{
+	$M_{\text{m}\times\text{n}}(\mathbb{R})$: Group w.r.t. matrix addition,;;;
+	$\text{GL}(2,\ \mathbb{R})$: Group w.r.t. matrix multiplication,;;;
+	$\text{SL}(2,\ \mathbb{R})$: Group w.r.t. matrix multiplication.
+}
+
+\myexample{Prove that $\text{GL}(2,\ \mathbb{R})$ forms a group under matrix multiplication.}
+\mysolution{
+	
+}
