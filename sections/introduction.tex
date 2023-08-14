@@ -18,14 +18,12 @@ A group is generally denoted by the notation $(G, +)$.
 	Let $(G, +)$ be a group. Then, if the operations $a+b$ and $b+a$ are equal for all $a,b$ in $G$, \emph{i.e.}, if Associativity holds in the group, then it is called an {\bfseries Abelian Group}. Otherwise it is called a {\bfseries Non-abelian Group.}
 }
 
-Below, a list of set-and-operations is given, along with whether they form a group or not:
-	
+Below, a list of set-and-operations is given, along with whether they form a group or not:	
 \smallskip
 \input{assets/sets_and_operations_table.tex}
 \smallskip
 
 \myexample{The set $F = \{ a_0x^n + a_1 x^{-1} + \dots + a_n: a_i \in \bbR \forall i = 1, 2, \dots, n \}$ forms a group under function addition.}
-
 \mysolution{
 	To prove that a certain set forms a group under the given operation, we need to prove the four properties mentioned above for all elements of the set. \\
 	In this example, clearly, if we let $f_1 = \sum\limits_{i=0}^{n} a_i x^{n-i}$, $f_2 = \sum\limits_{i=0}^{n} b_i x^{n-i}$, and $f_3 = \sum\limits_{i=0}^{n} c_i x^{n-i}$ belong to $F$, then the sum $f_1 + f_2 = \sum\limits_{i = 0}^{n} (a_i + b_i) x^{n-i}$ will also belong to $F$ as the coefficients still belong to $\bbR$ (since $\bbR$ is closed under addition). Hence, closure holds for this set. \\

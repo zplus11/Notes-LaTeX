@@ -8,6 +8,7 @@
 \usepackage{amsthm}
 \usepackage{booktabs}
 \usepackage{fontspec}
+\usepackage{titlesec}
 \usepackage{titletoc}
 \usepackage{caption}
 \usepackage{enumitem}
@@ -49,7 +50,7 @@
 \newcommand{\insertitem}[1]{\item #1}
 \NewDocumentCommand{\mylist}{>{\SplitList{;;;}}m}
 {
-	\begin{enumerate}[itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*]
+	\begin{enumerate}[itemsep=0pt,topsep=1pt,parsep=0pt,partopsep=0pt,leftmargin=*]
 		\ProcessList{#1}{\insertitem}	
 	\end{enumerate}
 }
@@ -178,33 +179,26 @@
 			
 			\draw[mycyan, line width = 2pt] (-20, 1.25) -- (20, 1.25);
 			\draw[mypeach, line width = 2pt] (-20, -1) -- (20, -1);
-			\node[fill = white, draw = white, text = black] at (7.5, -1.6)
+			\node[fill = white, draw = white, text = black] at (7.5, -1.7)
 				{\LARGE\bfseries\sectionsfont B.Sc. (Hons.) Mathematics};
-			\node[fill = white, draw = white, text = black] at (7.5, -2.25)
+			\node[fill = white, draw = white, text = black] at (7.5, -2.375)
 				{\Large\bfseries\sectionsfont University of Delhi};
 		\end{tikzpicture}
 	}
 	\vspace{3.5cm}
 }
 
-\renewcommand{\section}[1]{
-	\addcontentsline{toc}{section}{#1}
-	\vspace{0.5cm}
+\newcommand{\mysection}[1]{
 	\begin{center}
-		\hrule
 		\begin{tikzpicture}[overlay]
-			\fill[mycyan!90, draw = black] (0.025\linewidth, 0.5) -- (-.5\linewidth, 0.5) -- (-.5\linewidth, -0.5) -- (-0.025\linewidth, -0.5) -- cycle;
-			\fill[mypeach!90, draw = black] (0.025\linewidth, 0.5) -- (.5\linewidth, 0.5) -- (.5\linewidth, -0.5) -- (-0.025\linewidth, -0.5) -- cycle;
+			\fill[mycyan!90, draw = black] (0.025\linewidth, 0.5) rectangle (-.5\linewidth, -0.5);
+			\fill[mypeach!90, draw = black] (0.025\linewidth, 0.5) rectangle (.5\linewidth, -0.5);
 			\node[fill = white, draw = black, text = black] at (0, 0) {\LARGE\bfseries\sectionsfont #1};
-			\draw[line width = 1pt] (-.5\linewidth, 0.5) -- (.5\linewidth, 0.5) -- (.5\linewidth, -0.5) -- (-.5\linewidth, -0.5) -- cycle;
 		\end{tikzpicture}
 	\end{center}
 	\vspace{0.35cm}
 }
-
-\renewcommand{\subsection}[1]{
-	\addcontentsline{toc}{subsection}{#1}
-	\vspace{0.3cm}
+\newcommand{\mysubsection}[1]{
 	\begin{center}
 		\begin{tikzpicture}[overlay]
 			\draw[mypeach, line width = 10pt] (-.5\linewidth, 0) -- (0, 0);
@@ -212,8 +206,16 @@
 			\node[fill = white, text = black] at (0, 0) {\large\bfseries\sectionsfont #1};
 		\end{tikzpicture}
 	\end{center}
+	\vspace{0.3cm}
 }
 
+\titleformat{\section}[hang]{}{}{0pt}
+	{\centering\mysection}
+\titleformat{\subsection}[hang]{}{}{0pt}
+	{\centering\mysubsection}
+
+\titlespacing{\section}{0cm}{0.25cm}{-0.35cm}
+\titlespacing{\subsection}{0cm}{-0.25cm}{-0.7cm}
 
 %% Macros, letters, redefinitions
 
@@ -247,11 +249,18 @@
 \newcommand{\bbY}{\mathbb{Y}}	\newcommand{\bbZ}{\mathbb{Z}}
 
 
+
+
 %% main
 
 \begin{document}
 	
+	%\thispagestyle{empty}
 	\maketitle
+	%\vfill
+	\tableofcontents
+	%\vfill
+	%\newpage
 	
 	\input{sections/introduction.tex}
 	
